@@ -1,0 +1,7 @@
+{
+  "PRODUCT_SEGMENT": {
+    "target": {
+      "object": "PurchaseOrder.Item"
+    }
+  }
+}

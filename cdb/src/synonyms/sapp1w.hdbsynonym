@@ -1,0 +1,8 @@
+{
+  "SAPP1W": {
+    "target": {
+      "object": "PRODUCT_SEGMENT_SAPP1W",
+      "schema": "SAPP1W"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+ "ServiceName_1": {
+		    "object_owner" : {     "schema_privileges":[     {    "reference":"SAPP1W",       "privileges_with_grant_option":["SELECT", "SELECT METADATA"]       }       ]    },
+		    "application_user" : {  "schema_privileges":[     {   "reference":"SAPP1W",         "privileges_with_grant_option":["SELECT", "SELECT METADATA"]      }      ]    }
+		  }
+}

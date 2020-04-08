@@ -1,0 +1,9 @@
+using PRODUCT_SEGMENT as P_SEGMENT;
+context segments {
+define view SegmentsView as
+
+    
+        select from P_SEGMENT as S {
+            "S"."PRODUCT"
+        };
+    };

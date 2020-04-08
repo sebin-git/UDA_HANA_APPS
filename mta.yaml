@@ -19,6 +19,13 @@ modules:
     path: db
     requires:
       - name: hdi_db
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
+      - name: CROSS_SCHEMA_PRODUCTS
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: ServiceName_1
+          service: '~{products-service-name}'
   - name: core_xsjs
     type: nodejs
     path: core_xsjs
@@ -30,6 +37,18 @@ modules:
       - name: UAA-service
       - name: hdi_db
       - name: db
+  - name: cdb
+    type: hdb
+    path: cdb
+    requires:
+      - name: hdi_cdb
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name_2}'
+      - name: UPS_PRODUCT_SEGMENT_SERVICE
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: ServiceName_1
+          service: '~{the-service-name}'
 resources:
   - name: UAA-service
     type: com.sap.xs.uaa-space
@@ -47,3 +66,20 @@ resources:
     parameters:
       service: sapui5_sb
       service-plan: sapui5-1.52
+  - name: CROSS_SCHEMA_PRODUCTS
+    properties:
+      products-service-name: '${service-name}'
+    type: org.cloudfoundry.existing-service
+  - name: hdi_cdb
+    parameters:
+      config:
+        schema: CDB
+    properties:
+      hdi-container-name_2: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: UPS_PRODUCT_SEGMENT_SERVICE
+    parameters:
+      service-name: UPS_PRODUCT_SEGMENT
+    properties:
+      the-service-name: '${service-name}'
+    type: org.cloudfoundry.existing-service

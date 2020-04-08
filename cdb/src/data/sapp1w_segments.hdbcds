@@ -1,0 +1,7 @@
+using SAPP1W as P_SAPP1W;
+context segments {
+	
+	define view sapp1w_segmentsview as select from P_SAPP1W as S { "S"."PRODUCT" };
+			
+	};
+
