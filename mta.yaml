@@ -49,13 +49,23 @@ modules:
         properties:
           key: ServiceName_1
           service: '~{the-service-name}'
-
   - name: rudb
     type: hdb
     path: rudb
     requires:
-     - name: hdi_rudb
-
+      - name: hdi_rudb
+  - name: rufact_db
+    type: hdb
+    path: rufact_db
+    requires:
+      - name: hdi_rufact_db
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name_4}'
+      - name: RU_FACT_SERVICE
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: ServiceName_1
+          service: '~{the-service-name}'
 resources:
   - name: UAA-service
     type: com.sap.xs.uaa-space
@@ -90,12 +100,23 @@ resources:
     properties:
       the-service-name: '${service-name}'
     type: org.cloudfoundry.existing-service
-
   - name: hdi_rudb
     parameters:
-       config:
-          schema: rudb
+      config:
+        schema: rudb
     properties:
-       hdi-container-name_3: ${service-name}
+      hdi-container-name_3: '${service-name}'
     type: com.sap.xs.hdi-container
-
+  - name: hdi_rufact_db
+    parameters:
+      config:
+        schema: rufact_db
+    properties:
+      hdi-container-name_4: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: RU_FACT_SERVICE
+    parameters:
+      service-name: XSA_ADMIN-alp40jtq082gkzer-UDA_HANA_APPS-hdi_rudb
+    properties:
+      the-service-name: '${service-name}'
+    type: org.cloudfoundry.existing-service

@@ -1,0 +1,10 @@
+{
+  "XSA_ADMIN-alp40jtq082gkzer-UDA_HANA_APPS-hdi_rudb": {
+    "object_owner" : {
+      "container_roles":[ "access"]
+    },
+    "application_user" : {
+      "container_roles":["access"]
+    }
+  }
+}
