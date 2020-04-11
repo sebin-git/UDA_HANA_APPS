@@ -49,6 +49,13 @@ modules:
         properties:
           key: ServiceName_1
           service: '~{the-service-name}'
+
+  - name: rudb
+    type: hdb
+    path: rudb
+    requires:
+     - name: hdi_rudb
+
 resources:
   - name: UAA-service
     type: com.sap.xs.uaa-space
@@ -83,3 +90,12 @@ resources:
     properties:
       the-service-name: '${service-name}'
     type: org.cloudfoundry.existing-service
+
+  - name: hdi_rudb
+    parameters:
+       config:
+          schema: rudb
+    properties:
+       hdi-container-name_3: ${service-name}
+    type: com.sap.xs.hdi-container
+
