@@ -5,5 +5,12 @@
       "schema": "RUDB_1",
       "database": "HXE"
     }
+  },
+  "POHEADERRU": {
+    "target": {
+      "object": "PurchaseOrder.Header",
+      "schema": "RUDB_1",
+      "database": "HXE"
+    }
   }
 }

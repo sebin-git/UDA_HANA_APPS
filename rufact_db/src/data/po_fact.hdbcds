@@ -1,6 +1,0 @@
-using RU_FACT_SERVICE as P_RU_FACT_SERVICE;
-context po_fact {
-	
-	define view ru_fact_poview as select from P_RU_FACT_SERVICE as S { "S"."PRODUCT" };
-			
-	};
